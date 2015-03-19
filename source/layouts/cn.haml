@@ -7,7 +7,7 @@
 <!--[if (gt IE 9)|!(IE)]><!--> <html> <!--<![endif]-->
 %head
   %meta{:charset => "utf-8"}/
-  %meta{:content => "微搜索官方博客", :name => "description"}/
+  %meta{:content => "自由风暴", :name => "description"}/
   %meta{:content => "Freestorm", :name => "copyright"}/
   %link{:href => "/humans.txt", :rel => "author", :type => "text/plain"}/
   %meta{:content => "width=device-width, initial-scale=1.0", :name => "viewport"}/
@@ -17,13 +17,12 @@
   %meta{:content => "black-translucent", :name => "apple-mobile-web-app-status-bar-style"}/
   %meta{:content => "on", "http-equiv" => "cleartype"}/
   %meta{:content => "IE=edge,chrome=1", "http-equiv" => "X-UA-Compatible"}/
-  %link{:type => "application/opensearchdescription+xml", :href => "opensearch.xml", :title => "微搜索", :rel => "search" }/
+  %link{:type => "application/opensearchdescription+xml", :href => "opensearch.xml", :title => "自由风暴", :rel => "search" }/
   - if content_for? :title
     %title= yield_content :title
   - else
-    %title= data.page.title || "微搜索官方博客"
+    %title= data.page.title || "自由风暴"
   = stylesheet_link_tag "application"
-  = stylesheet_link_tag "//tinysou-cdn.b0.upaiyun.com/tinysou.css"
   = yield_content :stylesheets
   - if content_for? :styles
     :css
@@ -40,7 +39,7 @@
               %li.name
                 %h1
                   %a{href: '/'}
-                    = "微搜索官方博客"
+                    = "自由风暴"
             %section.top-bar-section
               %ul.left
                 %li.has-form
@@ -49,11 +48,7 @@
             %section.top-bar-section
               %ul.right
                 %li
-                  %a{href: 'http://tinysou.com/about.html'}= "关于我们"
-                %li
-                  %a{href: 'http://doc.tinysou.com'}= "文档"
-                %li
-                  %a{href: 'http://tinysou.com'}= "回到微搜索"
+                  %a{href: '/cn/about.html'}= "关于"
         %nav.tab-bar.show-for-small
           %section.left-small
             %a.left-off-canvas-toggle.menu-icon
@@ -61,7 +56,7 @@
           %section.middle.tab-bar-section
             %a{:href => "/"}
               %h1.title
-                = "微搜索官方博客"
+                = "自由风暴"
           - if content_for? :second_nav
             %section.right-small
               %a.right-off-canvas-toggle.menu-icon
@@ -73,15 +68,11 @@
             %li
               %a{href: '/'}= "首页"
             %li
-              %a{href: 'http://tinysou.com/about.html'}= "关于我们"
-            %li
-              %a{href: 'http://doc.tinysou.com'}= "文档"
+              %a{href: '/cn/about.html'}= "关于"
             %li
               %label= '站外链接'
             %li
-              %a{href: 'https://github.com/tinysou/blog.tinysou.com'}= '本站源代码'
-            %li
-              %a{href: 'http://tinysou.com'}= '微搜索主站'
+              %a{href: 'https://github.com/free-storm/freestorm.org'}= '本站源代码'
         %aside.right-off-canvas-menu.show-for-small
           = yield_content :second_nav
         %hr
@@ -97,11 +88,10 @@
                 %a.reverse{href: 'https://www.upyun.com/?md=geakit'}= '又拍云'
               %li
                 = '站点源代码托管在'
-                %a.reverse{href: 'https://github.com/tinysou/doc.tinysou.com'}= 'GitHub'
+                %a.reverse{href: 'https://github.com/free-storm/freestorm.org'}= 'GitHub'
           .small-12.large-pull-4.medium-pull-4.large-8.medium-8.columns
             %p.list
-              %a.reverse{href: 'http://tinysou.com'}= "© #{Date.today.year} 微搜索"
-              %a.reverse{href: 'http://www.miibeian.gov.cn'}= '苏ICP备12071270号'
+              %a.reverse{href: 'http://freestorm.org'}= "© #{Date.today.year} 自由风暴"
       %a.exit-off-canvas
 
   /[if lt IE 9]
@@ -136,16 +126,22 @@
 
   / Javascript
   = javascript_include_tag "application"
-  = javascript_include_tag '//tinysou-cdn.b0.upaiyun.com/nojquery.tinysou.js'
   = yield_content :javascripts
   :javascript
-    $(document).ready(function () {
-      #{yield_content :onready}
-      $(document).foundation();
-      $('#ts-search-input').tinysouSearch({
-        engineKey: '97eaafba26b04d3cdeb9'
-      });
-    });
+    var option = {
+      engineKey: '5f57a994ba8bbc81dbca'
+    };
+    (function(w,d,t,u,n,s,e){
+      s = d.createElement(t);
+      s.src = u;
+      s.async = 1;
+      w[n] = function(r){
+        w[n].opts = r;
+      };
+      e = d.getElementsByTagName(t)[0];
+      e.parentNode.insertBefore(s, e);
+    })(window,document,'script','//tinysou-cdn.b0.upaiyun.com/ts.js','_ts');
+    _ts(option);
 
   - if build?
     -# Google Analytics
@@ -155,6 +151,6 @@
       m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
       })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
 
-      ga('create', 'UA-53992829-1', 'auto');
+      ga('create', 'UA-52696285-1', 'auto');
       ga('send', 'pageview');
 </html>

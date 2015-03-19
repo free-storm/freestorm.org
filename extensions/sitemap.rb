@@ -5,7 +5,7 @@ module GoogleSitemapGenerator
     def registered(app)
       app.after_build do |builder|
         app_sitemap = sitemap # avoid name conflict
-        SitemapGenerator::Sitemap.default_host = "http://blog.tinysou.com/"
+        SitemapGenerator::Sitemap.default_host = "http://freestorm.org/"
         SitemapGenerator::Sitemap.filename = 'sitemap'
         SitemapGenerator::Sitemap.create(:public_path => 'build', :verbose => true) do
           app_sitemap.resources.each do |r|
@@ -19,4 +19,3 @@ module GoogleSitemapGenerator
 end
 
 ::Middleman::Extensions.register(:sitemap_generator, GoogleSitemapGenerator)
-

@@ -17,6 +17,6 @@
 .DS_Store
 
 # Ignore Vendor
-/vendor/ruby
+/vendor/bundle/ruby
 /vendor/assets/components/
 !/vendor/assets/components/.keep

@@ -39,6 +39,7 @@ activate :blog do |blog|
 end
 
 page '/cn/feed.xml', layout: false
+page '/cn/about.md', layout: 'cn'
 
 # Main Lang
 

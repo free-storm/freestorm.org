@@ -1,0 +1,7 @@
+app:
+    image: yandy0725/railsdev:latest
+    volumes:
+        - .:/data
+    ports:
+        - "4000:4000"
+    command: bundle exec middleman

@@ -5,7 +5,7 @@ pageable: true
 ---
 
 - content_for :title do
-  = "微搜索官方博客 - #{tagname}"
+  = "自由风暴 - #{tagname}"
 
 .sub-nav-bar
   .row
@@ -24,15 +24,8 @@ pageable: true
         %li
           = link_to '/cn/feed.xml' do
             %i.fa.fa-rss
-          / = link_to 'http://weibo.com/tinysou' do
-          /   %i.fa.fa-weibo
-          / = link_to 'https://twitter.com/tinysou' do
-          /   %i.fa.fa-twitter
-          / = link_to 'https://www.facebook.com/tinysou' do
-          /   %i.fa.fa-facebook
-          = link_to 'https://github.com/tinysou' do
+          = link_to 'https://github.com/free-storm' do
             %i.fa.fa-github
-        %li= image_tag('http://tinysou-cdn.b0.upaiyun.com/assets/images/qrcode_wx.jpg')
   .large-9.large-pull-3.small-12.columns
     .right-content
       - page_articles.each_with_index do |article, i|
