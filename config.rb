@@ -65,6 +65,7 @@ proxy '/index.html', '/cn/index.html'
 # With no layout
 page 'robots.txt', layout: false
 page 'humans.txt', layout: false
+page 'CNAME', layout: false
 
 # Per-page layout changes:
 #
