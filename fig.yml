@@ -3,5 +3,5 @@ app:
     volumes:
         - .:/data
     ports:
-        - "4000:4000"
+        - "4567:4567"
     command: bundle exec middleman

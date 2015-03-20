@@ -107,11 +107,6 @@ set :markdown, fenced_code_blocks: true, smartypants: true, tables: true
 
 set :haml, ugly: true
 
-# Livereload
-configure :development do
-  activate :livereload
-end
-
 # Build-specific configuration
 configure :build do
 
