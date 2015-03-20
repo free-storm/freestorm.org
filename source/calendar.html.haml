@@ -1,32 +1,36 @@
 ---
-layout: cn
-name: cn
+layout: base
 pageable: true
 ---
-- content_for :head do
-  %link{:href => "/cn/feed.xml", :rel => "alternate", :type => "application/atom+xml"}/
+
+- case page_type
+- when 'day'
+  - date_str = Date.new(year, month, day).strftime('%F')
+- when 'month'
+  - date_str = Date.new(year, month, 1).strftime('%Y-%m')
+- when 'year'
+  - date_str = year
 
 - content_for :title do
-  = "自由风暴"
+  = "自由风暴 - #{date_str}"
 
 .sub-nav-bar
   .row
     .large-7.columns
       %h4
-        %a{href: '#'}= '所有博客'
+        %a{href: '#'}
+          = date_str
 .row.main-content
   .large-3.large-push-9.small-12.columns
     .right-content
-      %h3 所有标签
-      .tags
-        - blog.tags.each do |tag, articles|
-          = link_to tag, tag_path(tag), :class => 'button secondary round extiny'
+      %h3
+        = date_str
       %hr/
       %ul.no-bullet.media
         %li
-          = link_to '/cn/feed.xml' do
+          = link_to '/feed.xml' do
             %i.fa.fa-rss
-          = link_to 'https://github.com/free-storm' do
+          = link_to 'https://github.com/free-storm/' do
             %i.fa.fa-github
   .large-9.large-pull-3.small-12.columns
     .right-content
@@ -34,8 +38,8 @@ pageable: true
         - if i > 0
           %hr/
         %h2= link_to article.title, article
-        = partial '/cn/article', :locals => {:article => article, :digest => true}
-      = partial '/cn/pagination', :locals => { |
+        = partial '/article', :locals => {:article => article, :digest => true}
+      = partial '/pagination', :locals => { |
           :paginate => paginate,               |
           :next_page => next_page,             |
           :prev_page => prev_page,             |

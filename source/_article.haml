@@ -2,13 +2,13 @@
   %ul.no-bullet.credit
     %li.date
       %i.fa.fa-calendar
-      = date_links article.date, 'cn'
+      = date_links article.date
     %li.author
       %i.fa.fa-user
       = article.data[:author]
   .tags
     - article.tags.each do |tag|
-      = link_to tag, tag_path(tag, 'cn'), :class => 'button secondary round extiny'
+      = link_to tag, tag_path(tag), :class => 'button secondary round extiny'
 .cell.markdown
   - if digest
     = article.summary
@@ -20,7 +20,7 @@
     = link_to '阅读全文&rarr;', article.url, :class => 'button primary radius small'
 
 - unless digest
-  = partial '/cn/share'
+  = partial '/share'
   %hr/
   %ul.no-bullet
     %li

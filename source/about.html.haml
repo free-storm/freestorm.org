@@ -1,0 +1,39 @@
+---
+layout: base
+---
+
+- content_for :title do
+  = "自由风暴的故事"
+
+.sub-nav-bar
+  .row
+    .large-7.columns
+      %h4
+        %a{href: '#'}
+          = date_str
+.row.main-content
+  .large-3.large-push-9.small-12.columns
+    .right-content
+      %h3
+        = date_str
+      %hr/
+      %ul.no-bullet.media
+        %li
+          = link_to '/feed.xml' do
+            %i.fa.fa-rss
+          = link_to 'https://github.com/free-storm/' do
+            %i.fa.fa-github
+  .large-9.large-pull-3.small-12.columns
+    .right-content
+      :markdown
+        ## 关于自由风暴
+
+        Michael Ding 是位技术宅，专业生物信息，却爱折腾计算机，折腾程序。
+
+        2010 年， Michael Ding 购买了 freestorm.org 这个域名，想和几个同样爱折腾的朋友一起搞一个技术博客，分享大家的折腾的收获。
+
+        后来，在头脑风暴的过程中，大家蹦出了创业的想法，公司也以 "自由风暴" 命名。
+
+        ## 关于 Michael Ding
+
+        这人很懒，自己的博客都没留下什么介绍。

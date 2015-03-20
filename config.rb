@@ -18,13 +18,11 @@ Time.zone = 'Asia/Shanghai'
 # CN Lang
 
 activate :blog do |blog|
-  blog.name = 'cn'
-  blog.prefix = 'cn'
-
+  blog.name = 'freestorm'
   blog.permalink = '{year}/{month}/{day}/{title}.html'
   blog.sources = '{year}-{month}-{day}-{title}.html'
   blog.taglink = 'tags/{tag}.html'
-  blog.layout = 'article.cn'
+  blog.layout = 'article'
   blog.summary_separator = /(READMORE)/
   blog.summary_length = 250
   blog.year_link = 'calendar/{year}.html'
@@ -34,16 +32,9 @@ activate :blog do |blog|
   blog.per_page = 10
   blog.page_link = 'p{num}'
   blog.default_extension = '.md'
-  blog.tag_template = '/cn/tag.html'
-  blog.calendar_template = '/cn/calendar.html'
+  blog.tag_template = '/tag.html'
+  blog.calendar_template = '/calendar.html'
 end
-
-page '/cn/feed.xml', layout: false
-page '/cn/about.md', layout: 'cn'
-
-# Main Lang
-
-proxy '/index.html', '/cn/index.html'
 
 ###
 # Compass
@@ -62,18 +53,18 @@ proxy '/index.html', '/cn/index.html'
 # Page options, layouts, aliases and proxies
 ###
 
-# With no layout
-page 'robots.txt', layout: false
-page 'humans.txt', layout: false
-page 'CNAME', layout: false
-
 # Per-page layout changes:
 #
 # With no layout
 # page "/path/to/file.html", :layout => false
+page '/feed.xml', layout: false
+page 'robots.txt', layout: false
+page 'humans.txt', layout: false
+page 'CNAME', layout: false
 #
 # With alternative layout
 # page "/path/to/file.html", :layout => :otherlayout
+page '/about.md'
 #
 # A path which all have the same layout
 # with_layout :en do

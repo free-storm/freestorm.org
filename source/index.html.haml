@@ -1,17 +1,18 @@
 ---
-layout: cn
-name: cn
+layout: base
 pageable: true
 ---
+- content_for :head do
+  %link{:href => "/feed.xml", :rel => "alternate", :type => "application/atom+xml"}/
 
 - content_for :title do
-  = "自由风暴 - #{tagname}"
+  = "自由风暴"
 
 .sub-nav-bar
   .row
     .large-7.columns
       %h4
-        %a{href: '#'}= tagname
+        %a{href: '#'}= '所有博客'
 .row.main-content
   .large-3.large-push-9.small-12.columns
     .right-content
@@ -22,7 +23,7 @@ pageable: true
       %hr/
       %ul.no-bullet.media
         %li
-          = link_to '/cn/feed.xml' do
+          = link_to '/feed.xml' do
             %i.fa.fa-rss
           = link_to 'https://github.com/free-storm' do
             %i.fa.fa-github
@@ -32,8 +33,8 @@ pageable: true
         - if i > 0
           %hr/
         %h2= link_to article.title, article
-        = partial '/cn/article', :locals => {:article => article, :digest => true}
-      = partial '/cn/pagination', :locals => { |
+        = partial '/article', :locals => {:article => article, :digest => true}
+      = partial '/pagination', :locals => { |
           :paginate => paginate,               |
           :next_page => next_page,             |
           :prev_page => prev_page,             |
