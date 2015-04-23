@@ -27,6 +27,15 @@ pageable: true
             %i.fa.fa-rss
           = link_to 'https://github.com/free-storm' do
             %i.fa.fa-github
+      %hr/
+      %h3 友情链接
+      %ul.no-bullet
+        %li
+          = link_to 'http://isekai.me' do
+            = '伶鼬'
+        %li
+          = link_to 'http://shiningray.cn' do
+            = 'Shining Ray'
   .large-9.large-pull-3.small-12.columns
     .right-content
       - page_articles.each_with_index do |article, i|
