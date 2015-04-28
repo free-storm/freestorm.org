@@ -1,5 +1,5 @@
 ---
-title: Eventual Consistency(最终一致性) - 分布式数据库相关理论 Part 2
+title: Eventual Consistency(最终一致性) - 分布式数据库相关理论 Part2
 date: 2015-04-23
 author: Michael Ding
 tags:
