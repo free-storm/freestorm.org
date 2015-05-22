@@ -1,5 +1,5 @@
 ---
-title: "Redis \"Can't save in background: fork: Cannot allocate memory\""
+title: Redis 相关的 Linux 内核参数
 date: 2015-03-15
 author: Michael Ding
 tags:
@@ -7,7 +7,7 @@ tags:
 - Redis
 ---
 
-## 问题
+## 问题 1
 
 默认情况下，redis 的持久化方案是 RDB，对于数据丢失的风险相对较高。
 如果对于持久化要求较高，一般会使用 AOF。
@@ -23,23 +23,23 @@ Redis 的后台持久化基于操作系统 `fork` 的 `copy-on-write`特性。re
 所以如果 Linux 的内核参数 `overcommit_memory` 设置成 `0` 的话，除非空闲内存比父进程占用的内存还要多，
 否则 `fork` 就会失败。只有当 `overcommit_memory` 被设置成 `1`，Linux 才会尝试去 `fork`。
 
-## 方案
+## 方案 1
 
 思路：将 `overcommit_memory` 设置成 `1`
 
-#### 方法 1
+#### 方法 1.1
 
 ```
 echo 1 > /proc/sys/vm/overcommit_memory
 ```
 
-#### 方法 2
+#### 方法 1.2
 
 ```
 sysctl vm.overcommit_memory=1
 ```
 
-#### 方法 3
+#### 方法 1.3
 
 ```
 echo 'vm.overcommit_memory=1' > /etc/sysctl.d/60-vm-memory.conf
@@ -47,3 +47,29 @@ service procps start
 ```
 
 **注意** 60开头的文件中的设置会最晚被执行
+
+
+## 问题 2
+
+可能导致 Redis 意外崩溃的 Redis 参数设置
+
+## 方案 2
+
+### net.core.somaxconn
+```
+you have Transparent Huge Pages (THP) support enabled in your kernel. This will create latency and memory usage issues with Redis. To fix this issue run the command 'echo never > /sys/kernel/mm/transparent_hugepage/enabled' as root, and add it to your /etc/rc.local in order to retain the setting after a reboot. Redis must be restarted after THP is disabled.
+```
+
+```
+echo 'net.core.somaxconn=256' > /etc/sysctl.d/60-net.conf
+service procps start
+```
+
+### transparent huge page
+```
+you have Transparent Huge Pages (THP) support enabled in your kernel. This will create latency and memory usage issues with Redis. To fix this issue run the command 'echo never > /sys/kernel/mm/transparent_hugepage/enabled' as root, and add it to your /etc/rc.local in order to retain the setting after a reboot. Redis must be restarted after THP is disabled.
+```
+
+```
+echo never > /sys/kernel/mm/transparent_hugepage/enabled
+```
