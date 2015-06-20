@@ -132,3 +132,6 @@ DEPENDENCIES
   nokogiri
   redcarpet
   sitemap_generator
+
+BUNDLED WITH
+   1.10.3
