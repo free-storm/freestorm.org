@@ -2,7 +2,8 @@
   "name": "freestorm.org",
   "version": "0.0.1",
   "dependencies": {
-    "foundation": "~5.3.1"
+    "foundation": "~5.3.1",
+    "modernizr": "~2.8.3"
   },
   "private": true
 }
