@@ -5,6 +5,7 @@ author: Michael Ding
 tags:
 - 分布式
 - 数据库
+- 分布式数据库相关理论
 ---
 
 ## 1. Eventual Consistency 概述
